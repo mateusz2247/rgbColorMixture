@@ -29,20 +29,44 @@
       :movement="-0.5"
       :font-size="1.5"
       icon="sync" />
+      <button-item
+      @click="modalVisible = true"
+      :size="4"
+      :movement="-0.5"
+      :font-size="1.5"
+      icon="book" />
     <!-- <button
       @click="$emit('refresh')"
       class="refresh-btn">
       <span
         class="fas fa-sync" />
     </button> -->
+    <ModalItem
+  v-if="modalVisible"
+  @cancel="modalVisible = false">
+   <template v-slot:header>
+    About the app
+   </template>
+
+   <template v-slot:body>
+    Mix three colors to create the perfect one!
+   </template>
+
+   <template v-slot:footer>
+    <button-item icon="fas fa-thumbs-up" />
+   </template>
+
+</ModalItem>
   </div>
 </template>
 
 <script>
 /* import BigMixtureItem from './BigMixtureItem' */
+import ModalItem from './ModalItem.vue'
 import FlaskItem from './FlaskItem.vue'
 import ButtonItem from './shared/ButtonItem.vue'
 export default {
+  data: () => ({ modalVisible: false }),
   name: 'ResultsBox',
   props: {
     mixtures: {
@@ -57,7 +81,7 @@ export default {
     }
   },
   components: {
-    ButtonItem, FlaskItem
+    ButtonItem, FlaskItem, ModalItem
   }
 }
 
