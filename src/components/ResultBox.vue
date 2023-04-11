@@ -16,6 +16,8 @@
         @increment="$emit('increment', index)"
         @decrement="$emit('decrement', index)" /> -->
         <FlaskItem
+        style="margin: 3rem auto"
+        :amount="100"
         :buttonsVisible="false"
         :size="15"
         :color="mixtureEffectFill"
